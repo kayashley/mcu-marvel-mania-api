@@ -47,3 +47,23 @@ http
   .listen(8080); // listening port 8080
 
 console.log("My first Node test server is running on Port 8080");
+
+
+// node.js http requests 
+// const http = require("http"); // importing http module
+// const url = require("url"); // importing url module
+
+// http
+//   .createServer((request, response) => {
+//     let requestURL = url.parse(request.url, true);
+//     if (requestURL.pathname == "/movies.html") {
+//       response.writeHead(200, { "Content-Type": "text/plain" }); // adds header to res, returns http status code 200, OK
+//       response.end("Movies on the MCU movie API");
+//     } else {
+//       response.writeHead(200, { "Content-Type": "text/plain" });
+//       response.end("Welcome to MCU movie app!");
+//     }
+//   })
+//   .listen(8080); // listening on port 8080
+
+// console.log("My first Node text server is running on port 8080");
