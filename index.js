@@ -1,11 +1,23 @@
 const express = require("express"); // importing express module
 // logging middleware for express, morgan
 const morgan = require("morgan"); // importing morgan module
+const fs = require("fs"); // importing fs module
+const path = require("path"); // importing path module
 // app = express functionality
 const app = express(); // to config to web server
 
-// invoke morgan middleware
-app.use(morgan("common")); // common loggin from morgan: time, method/path, and status code
+/*
+write stream (in append mode)
+log.txt file is created in root dir
+ */
+const accessLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), {
+  flags: "a",
+});
+
+// invoke morgan middleware, logger
+// 'common' logging: time, method/path, and status code
+// 'combined' logging
+app.use(morgan("combined", { stream: accessLogStream }));
 
 let MCUmovies = [
   {
