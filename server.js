@@ -6,8 +6,22 @@ const path = require("path"); // importing path module
 const bodyParser = require("body-parser"); // importing body-parser module
 const uuid = require("uuid"); // importing uuid module, unique id
 
+// integrating mongoose with REST API
+const mongoose = require("mongoose"); // importing mongoose module
+const Models = require("./models.js"); // importing models.js file
+// importing mongoose models
+const Movies = Models.Movie;
+const Users = Models.User;
+
+// Mongoose connects to db, "MCUmarvel-movie-api-db"
+mongoose.connect("mongodb://localhost:27017/MCUmarvel-movie-api-db", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
 // app = express functionality
 const app = express(); // to config to web server
+app.use(express.urlencoded({ extended: true })); // required for running express above V4.16
 
 /*
 write stream (in append mode)
@@ -62,20 +76,24 @@ let MCUmovies = [
 // Gets all users
 /* insert http req */
 
+app.get("/users", async (req, res) => {
+  res.json(Users); // User model
+});
+
 // Gets user by user ID
 /* insert http req */
 
 // Gets the list of marvel movies
-app.get("/movies", (req, res) => {
-  res.json(MCUmovies);
+app.get("/movies", async (req, res) => {
+  res.json(Movies); // Movie model
 });
 
 // Gets movie by title
-app.get("/movies/:movieName", (req, res) => {
+app.get("/movies/:movieName", async (req, res) => {
   res.json(
-    MCUmovies.find((movie) => {
+    Movies.find((movie) => {
       {
-        return movie.title === req.params.title;
+        return movie.Name === req.params.Name;
       }
     })
   );
@@ -107,6 +125,33 @@ app.get("/movies/genres/:genreName", (req, res) => {
 
 // Posts updated information to users account: username, password, email, birthday
 /* insert http req */
+
+app.post("/users", async (req, res) => {
+  await Users.findOne({ Username: req.body.Username }) // checks to see if user already exists
+    .then((user) => {
+      if (user) {
+        return res.status(400).send(req.body.Username + "already exists");
+      } else {
+        Users.create({
+          Username: req.body.Username,
+          Password: req.body.Password,
+          Email: req.body.Email,
+          Birthday: req.body.Birthday,
+        })
+          .then((user) => {
+            res.status(201).json(user);
+          })
+          .catch((error) => {
+            console.log(error);
+            res.status(500).send("Error: " + error);
+          });
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).send("Error: " + error);
+    });
+});
 
 // Posts movies to users favorites list
 app.post("/movies/:movieID", (req, res) => {
