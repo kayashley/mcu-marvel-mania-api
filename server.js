@@ -14,7 +14,7 @@ const Movies = Models.Movie;
 const Users = Models.User;
 
 // Mongoose connects to db, "MCUmarvel-movie-api-db"
-mongoose.connect("mongodb://localhost:27017/MCUmarvel-movie-api-db", {
+mongoose.connect("mongodb://127.0.0.1:27017/MCUmarvel-movie-api-db", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -73,19 +73,44 @@ let MCUmovies = [
 
 // GET requests
 
+// GET route for the root URL
+app.get("/", (req, res) => {
+  res.send("Welcome to MCU marvel movie api!");
+});
+
 // Gets all users
 /* insert http req */
 
 app.get("/users", async (req, res) => {
-  res.json(Users); // User model
+  // res.json(Users); // User model
+
+  Users.find()
+    .then((users) => {
+      res.status(201).json(users);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).send("Error: " + error);
+    });
 });
 
 // Gets user by user ID
 /* insert http req */
 
-// Gets the list of marvel movies
+// Gets list of marvel movies
+// app.get("/movies", async (req, res) => {
+//   res.send("List of movies");
+// });
+
 app.get("/movies", async (req, res) => {
-  res.json(Movies); // Movie model
+  Movies.find()
+    .then((movies) => {
+      res.status(201).json(movies);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).send("Error: " + error);
+    });
 });
 
 // Gets movie by title

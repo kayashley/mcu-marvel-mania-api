@@ -3,13 +3,18 @@ const mongoose = require("mongoose"); // importing mongoose module
 // movieSchema dictates format for collection
 let movieSchema = mongoose.Schema({
   Name: { type: String, required: true },
-  Rating: String,
+  Rating: { type: String, required: true },
   ReleaseDate: Date,
-  Runtime: String,
+  Runtime: { type: String, required: true },
   Synopsis: { type: String, required: true },
+  Directors: {
+    Name: String,
+    Birthyear: Date,
+    Bio: String,
+  },
   Directors: [String], // unsure if this will cause an error, some collections follow a diff format
   Genres: [String],
-  Image: String,
+  Image: { type: String, required: true },
 });
 
 // userSchema dictates format for collection
@@ -17,7 +22,7 @@ let userSchema = mongoose.Schema({
   Username: { type: String, required: true },
   Password: { type: String, required: true },
   Email: { type: String, required: true },
-  Birthday: Date,
+  Birthday: { type: Date, required: true },
   FavoriteMovies: [{ type: mongoose.Schema.Types.ObjectId, ref: "Movie" }],
 });
 

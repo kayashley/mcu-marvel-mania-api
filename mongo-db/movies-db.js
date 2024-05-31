@@ -29,11 +29,7 @@ var movie2 = {
   Runtime: "1h 52m",
   Synopsis:
     "Scientist Bruce Banner (Edward Norton) desperately seeks a cure for the gamma radiation that contaminated his cells and turned him into The Hulk. Cut off from his true love Betty Ross (Liv Tyler) and forced to hide from his nemesis, Gen. Thunderbolt Ross (William Hurt), Banner soon comes face-to-face with a new threat: a supremely powerful enemy known as The Abomination (Tim Roth).",
-  Directors: {
-    Name: "Louis Leterrier",
-    Birthyear: "Jun 17, 1973",
-    Bio: 'Though Parisian director Louis Leterrier has only been making motion pictures for less than a decade, each production has been an action-packed blockbuster hit. He grew up in a film oriented family with a director father and costume designer mother. After studying film at the prestigious Tisch School of the Arts at NYU, Leterrier returned to his homeland and found himself as a production assistant for "Alien Resurrection."',
-  },
+  Directors: ObjectId("665a36fb35077c2407c590a7"),
   Genres: [
     ObjectId("66562e9f76c29aee626387a3"),
     ObjectId("66562ed176c29aee626387a4"),
@@ -76,11 +72,7 @@ var movie4 = {
   Runtime: "1h 53m",
   Synopsis:
     "As the son of Odin (Anthony Hopkins), king of the Norse gods, Thor (Chris Hemsworth) will soon inherit the throne of Asgard from his aging father. However, on the day that he is to be crowned, Thor reacts with brutality when the gods' enemies, the Frost Giants, enter the palace in violation of their treaty. As punishment, Odin banishes Thor to Earth. While Loki (Tom Hiddleston), Thor's brother, plots mischief in Asgard, Thor, now stripped of his powers, faces his greatest threat.",
-  Directors: {
-    Name: "Kenneth Branagh",
-    Birthyear: "Dec 10, 1960",
-    Bio: 'Kenneth Branagh moved to England with his family when he was 10. This is when he began his love affair with Shakespeare, reading 25-cent paperbacks of his plays. Branagh began his career in theater and soon became a familiar face on the acclaimed 1984 BBC trilogy "Too Late to Talk to Billy," "A Matter of Choice for Billy" and "A Coming to Terms for Billy." After making a name for himself with "Another Country," he joined the Royal Shakespeare Company at age 23, and was the youngest "Henry V" in the troupe\'s history.',
-  },
+  Directors: ObjectId("665a3b8102b3896e3a39d7d4"),
   Genres: [
     ObjectId("66562e9f76c29aee626387a3"),
     ObjectId("66562ed176c29aee626387a4"),
@@ -101,11 +93,7 @@ var movie5 = {
   Runtime: "2h 4m",
   Synopsis:
     "It is 1941 and the world is in the throes of war. Steve Rogers (Chris Evans) wants to do his part and join America's armed forces, but the military rejects him because of his small stature. Finally, Steve gets his chance when he is accepted into an experimental program that turns him into a supersoldier called Captain America. Joining forces with Bucky Barnes (Sebastian Stan) and Peggy Carter (Hayley Atwell), Captain America leads the fight against the Nazi-backed HYDRA organization.",
-  Directors: {
-    Name: "Joe Johnston",
-    Birthyear: "May 13, 1950",
-    Bio: 'Despite having received his start in film as a part of George Lucas\' famed visual effects team on "Star Wars" (1977), and eventually directing several high-profile movies himself, Joe Johnston somehow managed to keep a remarkably low-profile during much of his career. Originally intending to pursue a career in industrial design, Johnston\'s professional path took an unexpected turn when he answered an ad looking for illustrators to work on a new science fiction movie. That movie turned out to be "Star Wars," and from there Johnston worked as a visual effects director on that film\'s two sequels, in addition to similar duties on Steven Spielberg\'s "Raiders of the Lost Ark" (1981).',
-  },
+  Directors: ObjectId("665a3c1d02b3896e3a39d7d5"),
   Genres: [
     ObjectId("66562e9f76c29aee626387a3"),
     ObjectId("66562ed176c29aee626387a4"),
@@ -146,11 +134,7 @@ var movie7 = {
   Runtime: "2h 10m",
   Synopsis:
     "Plagued with worry and insomnia since saving New York from destruction, Tony Stark (Robert Downey Jr.), now, is more dependent on the suits that give him his Iron Man persona -- so much so that every aspect of his life is affected, including his relationship with Pepper (Gwyneth Paltrow). After a malevolent enemy known as the Mandarin (Ben Kingsley) reduces his personal world to rubble, Tony must rely solely on instinct and ingenuity to avenge his losses and protect the people he loves.",
-  Directors: {
-    Name: "Shane Black",
-    Birthyear: "Dec 16, 1961",
-    Bio: 'On his way to becoming one of the highest-paid screenwriters in motion picture history, Shane Black redefined the action movie by flipping its stale conventions upon its head while producing untold numbers of pale imitators. Black shot to the top of the class with his first script, "Lethal Weapon" (1987), which resuscitated the buddy cop genre on its way to becoming one of the biggest hits of the year.',
-  },
+  Directors: ObjectId("665a3cdc02b3896e3a39d7d6"),
   Genres: [
     ObjectId("66562e9f76c29aee626387a3"),
     ObjectId("66562ed176c29aee626387a4"),
@@ -172,11 +156,7 @@ var movie8 = {
   Runtime: "1h 51m",
   Synopsis:
     "In ancient times, the gods of Asgard fought and won a war against an evil race known as the Dark Elves. The survivors were neutralized, and their ultimate weapon -- the Aether -- was buried in a secret location. Hundreds of years later, Jane Foster (Natalie Portman) finds the Aether and becomes its host, forcing Thor (Chris Hemsworth) to bring her to Asgard before Dark Elf Malekith (Christopher Eccleston) captures her and uses the weapon to destroy the Nine Realms -- including Earth.",
-  Directors: {
-    Name: "Alan Taylor",
-    Birthyear: "Jan 13, 1959",
-    Bio: 'A former history major who switched to film after losing faith in the academic life, Alan Taylor scored critical approval with his first feature, "Palookaville" (1995), about three young men in Jersey City, NJ, mired in great-rich-quick schemes. Made in association with American Playhouse, the film, which won the Kodak Award at the Venice Film Festival, owed its inspiration to short stories by Italian writer Italo Calvini as well as several classic films, notably "Big Deal on Madonna Street" (1958).',
-  },
+  Directors: ObjectId("665a3d9d02b3896e3a39d7d7"),
   Genres: [
     ObjectId("66562e9f76c29aee626387a3"),
     ObjectId("66562ed176c29aee626387a4"),
@@ -312,11 +292,7 @@ var movie14 = {
   Runtime: "1h 55m",
   Synopsis:
     "Dr. Stephen Strange's (Benedict Cumberbatch) life changes after a car accident robs him of the use of his hands. When traditional medicine fails him, he looks for healing, and hope, in a mysterious enclave. He quickly learns that the enclave is at the front line of a battle against unseen dark forces bent on destroying reality. Before long, Strange is forced to choose between his life of fortune and status or leave it all behind to defend the world as the most powerful sorcerer in existence.",
-  Directors: {
-    Name: "Scott Derrickson",
-    Birthyear: "Jul 16, 1966",
-    Bio: "Writer/director Scott Derrickson gave America nightmares with a series of slick scary movies. Seeing that so many of his films deal with the nature of good and evil, god and the devil, it should come as no surprise that Derrickson studied theology alongside literature, philosophy and film at Biola University, CA, a university known for its evangelical Christian viewpoint.",
-  },
+  Directors: [ObjectId("665a3e7b02b3896e3a39d7d8")],
   Genres: [
     ObjectId("66562e9f76c29aee626387a3"),
     ObjectId("66562ed176c29aee626387a4"),
@@ -542,11 +518,7 @@ var movie24 = {
   Runtime: "2h 13m",
   Synopsis:
     'In Marvel Studios\' action-packed spy thriller "Black Widow," Natasha Romanoff aka Black Widow confronts the darker parts of her ledger when a dangerous conspiracy with ties to her past arises. Pursued by a force that will stop at nothing to bring her down, Natasha must deal with her history as a spy and the broken relationships left in her wake long before she became an Avenger.',
-  Directors: {
-    Name: "Cate Shortland",
-    Birthyear: "Aug 10, 1968",
-    Bio: "Cate Shortland is an Australian director and screenwriter. She received international acclaim for her 2004 romantic drama film Somersault, her 2012 historical drama film Lore, and her 2017 psychological thriller film Berlin Syndrome. She is best known for directing the 2021 superhero film Black Widow.",
-  },
+  Directors: [ObjectId("665a3f4938611a8f29f9af85")],
   Genres: [
     ObjectId("66562e9f76c29aee626387a3"),
     ObjectId("66562ed176c29aee626387a4"),
@@ -566,11 +538,7 @@ var movie25 = {
   Runtime: "2h 13m",
   Synopsis:
     "Marvel Studios' \"Shang-Chi and The Legend of The Ten Rings\" stars Simu Liu as Shang-Chi, who must confront the past he thought he left behind when he is drawn into the web of the mysterious Ten Rings organization. The film also stars Tony Leung as Wenwu, Awkwafina as Shang-Chi's friend Katy and Michelle Yeoh as Jiang Nan, as well as Fala Chen, Meng'er Zhang, Florian Munteanu and Ronny Chieng.",
-  Directors: {
-    Name: "Destin Daniel Cretton",
-    Birthyear: "Nov 23, 1978",
-    Bio: "Destin Yori Daniel Cretton is an American filmmaker. He is best known for his films Short Term 12, The Glass Castle, Just Mercy and the Marvel Studios film Shang-Chi and the Legend of the Ten Rings.",
-  },
+  Directors: [ObjectId("665a3fcd38611a8f29f9af86")],
   Genres: [
     ObjectId("66562e9f76c29aee626387a3"),
     ObjectId("66562ed176c29aee626387a4"),
@@ -591,11 +559,7 @@ var movie26 = {
   Runtime: "2h 37m",
   Synopsis:
     "Marvel Studios' Eternals features an exciting new team of Super Heroes in the Marvel Cinematic Universe, ancient aliens who have been living on Earth in secret for thousands of years. Following the events of Avengers: Endgame, an unexpected tragedy forces them out of the shadows to reunite against mankind's most ancient enemy, the Deviants.",
-  Directors: {
-    Name: "Chloé Zhao",
-    Birthyear: "Mar 31, 1982",
-    Bio: "Chloe Zhao's life was primarily guided by a quest for information. Born in China, she grew up in a place where she felt trapped, like she was never going to get out. When her family finally moved away to London when she was in high school, she then researched and learned what she had missed being in China.",
-  },
+  Directors: [ObjectId("665a406c38611a8f29f9af87")],
   Genres: [
     ObjectId("66562e9f76c29aee626387a3"),
     ObjectId("66562ed176c29aee626387a4"),
@@ -637,11 +601,7 @@ var movie28 = {
   Runtime: "2h 6m",
   Synopsis:
     'In Marvel Studios\' "Doctor Strange in the Multiverse of Madness," the MCU unlocks the Multiverse and pushes its boundaries further than ever before. Journey into the unknown with Doctor Strange, who, with the help of mystical allies both old and new, traverses the mind-bending and dangerous alternate realities of the Multiverse to confront a mysterious new adversary.',
-  Directors: {
-    Name: "Sam Raimi",
-    Birthyear: "Oct 23, 1959",
-    Bio: 'Born in a suburb of Detroit, Michigan in 1959, Sam Raimi began making movies with Bruce Campbell and some other friends when they were in their teens. The two would continue to collaborate repeatedly over the span of their careers. Raimi attended Michigan State University, but dropped out to make "The Evil Dead" (1981), starring Campbell.',
-  },
+  Directors: [ObjectId("665a412838611a8f29f9af88")],
   Genres: [
     ObjectId("66562e9f76c29aee626387a3"),
     ObjectId("66562ed176c29aee626387a4"),
@@ -750,11 +710,7 @@ var movie33 = {
   Runtime: "1h 45m",
   Synopsis:
     'Carol Danvers aka Captain Marvel has reclaimed her identity from the tyrannical Kree and taken revenge on the Supreme Intelligence. But unintended consequences see Carol shouldering the burden of a destabilized universe. When her duties send her to an anomalous wormhole linked to a Kree revolutionary, her powers become entangled with that of Jersey City super-fan, Kamala Khan aka Ms. Marvel, and Carol\'s estranged niece, now S.A.B.E.R. astronaut Captain Monica Rambeau. Together, this unlikely trio must team-up and learn to work in concert to save the universe as "The Marvels."',
-  Directors: {
-    Name: "Nia DaCosta",
-    Birthyear: "Nov 8, 1989",
-    Bio: "Nia DaCosta is an American film director, screenwriter, and producer. She made her feature film debut as a writer and director for her crime thriller film Little Woods. Nia garnered wide acclaim for winning the Nora Ephron Prize for Female Filmmakers at the Tribeca Film Festival.",
-  },
+  Directors: [ObjectId("665a41e338611a8f29f9af89")],
   Genres: [
     ObjectId("66562e9f76c29aee626387a3"),
     ObjectId("66562ed176c29aee626387a4"),
