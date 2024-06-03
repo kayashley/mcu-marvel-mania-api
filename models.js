@@ -12,9 +12,22 @@ let movieSchema = mongoose.Schema({
     Birthyear: Date,
     Bio: String,
   },
-  Directors: [String], // unsure if this will cause an error, some collections follow a diff format
+  Directors: [String],
   Genres: [String],
   Image: { type: String, required: true },
+});
+
+// directorSchema dictates format for collection
+let directorSchema = mongoose.Schema({
+  Name: { type: String, required: true },
+  Birthyear: Date,
+  Bio: { type: String, required: true },
+});
+
+// genreSchema - dictates format for collection
+let genreSchema = mongoose.Schema({
+  Name: { type: String, required: true },
+  Description: { type: String, required: true },
 });
 
 // userSchema dictates format for collection
@@ -28,6 +41,10 @@ let userSchema = mongoose.Schema({
 
 let Movie = mongoose.model("Movie", movieSchema); // creates db.movies within MongoDB
 let User = mongoose.model("User", userSchema); // creates db.users within MongoDB
+let Director = mongoose.model("Director", directorSchema); // creates db.directors within MongoDB
+let Genre = mongoose.model("Genre", genreSchema); // creates db.genres within MongoDB
 
 module.exports.Movie = Movie; // exports model, Movie
 module.exports.User = User; // exports model, User
+module.exports.Director = Director; // exports model, Director
+module.exports.Genre = Genre; // exports model, Genre
