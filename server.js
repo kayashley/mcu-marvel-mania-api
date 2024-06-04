@@ -1,14 +1,16 @@
 const express = require("express"); // importing express module
-// logging middleware for express, morgan
-const morgan = require("morgan"); // importing morgan module
+const morgan = require("morgan"); // importing morgan module, logging middleware for express
 const fs = require("fs"); // importing fs module
 const path = require("path"); // importing path module
 const bodyParser = require("body-parser"); // importing body-parser module
 const uuid = require("uuid"); // importing uuid module, unique id
+const passport = require("passport"); // importing passport library
+require("./passport"); // importing passport.js file
 
 // integrating mongoose with REST API
 const mongoose = require("mongoose"); // importing mongoose module
 const Models = require("./models.js"); // importing models.js file
+const { error } = require("console");
 // importing mongoose models
 const Movies = Models.Movie; // Movie model
 const Users = Models.User; // User model
@@ -24,6 +26,8 @@ mongoose.connect("mongodb://127.0.0.1:27017/MCUmarvel-movie-api-db", {
 // app = express functionality
 const app = express(); // to config to web server
 app.use(express.urlencoded({ extended: true })); // required for running express above V4.16
+
+let auth = require("./auth")(app); // importing local auth file, app argument to ensure express is available in auth.js
 
 /*
 write stream (in append mode)
@@ -124,6 +128,31 @@ app.get("/movies/:Name", async (req, res) => {
     .catch((error) => {
       console.log(error);
       res.status(500).send("Error: " + error); // responds with error
+    });
+});
+
+// Gets movies by genre
+app.get("/movies/genres/:genreId", (req, res) => {
+  Movies.find({ Genres: req.params.genreId })
+    .then((movies) => {
+      console.log("Movies:", movies);
+      res.json(movies);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error: " + err);
+    });
+});
+
+// Gets movies by director name
+app.get("/movies/directors/:directorID", (req, res) => {
+  Movies.find({ Directors: req.params.directorID })
+    .then((movies) => {
+      res.json(movies);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error: " + err);
     });
 });
 

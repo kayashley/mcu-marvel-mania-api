@@ -12,8 +12,8 @@ let movieSchema = mongoose.Schema({
     Birthyear: Date,
     Bio: String,
   },
-  Directors: [String],
-  Genres: [String],
+  Directors: [{ type: mongoose.Schema.Types.ObjectId, ref: "Director" }],
+  Genres: [{ type: mongoose.Schema.Types.ObjectId, ref: "Genre" }],
   Image: { type: String, required: true },
 });
 
