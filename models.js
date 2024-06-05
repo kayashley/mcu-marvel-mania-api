@@ -1,4 +1,5 @@
 const mongoose = require("mongoose"); // importing mongoose module
+const bcrypt = require("bcrypt"); // importing bcrypt module
 
 // movieSchema dictates format for collection
 let movieSchema = mongoose.Schema({
@@ -38,6 +39,16 @@ let userSchema = mongoose.Schema({
   Birthday: Date,
   FavoriteMovies: [{ type: mongoose.Schema.Types.ObjectId, ref: "Movie" }],
 });
+
+// hashes submitted password
+userSchema.statics.hashPassword = (password) => {
+  return bcrypt.hashSync(password, 10);
+};
+
+// validates submitted password with hashed password
+userSchema.methods.validatePassword = function (password) {
+  return bcrypt.compare(password, this.Password);
+};
 
 let Movie = mongoose.model("Movie", movieSchema); // creates db.movies within MongoDB
 let User = mongoose.model("User", userSchema); // creates db.users within MongoDB

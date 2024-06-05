@@ -15,6 +15,9 @@ const Users = Models.User; // User model
 const Directors = Models.Director; // Director model
 const Genres = Models.Genre; // Genre model
 
+// server-side validation
+const { check, validationResult } = require("express-validator"); // importing express-validator package
+
 // Mongoose connects to db, "MCUmarvel-movie-api-db"
 mongoose.connect("mongodb://127.0.0.1:27017/MCUmarvel-movie-api-db", {
   useNewUrlParser: true,
@@ -40,6 +43,27 @@ app.use(morgan("combined", { stream: accessLogStream }));
 app.use(express.static("public")); // send many static files
 app.use(bodyParser.json()); // middleware that allows you to access the body of a req through 'req.body'
 
+// before auth router middleware
+const cors = require("cors"); // importing cors module
+// defines app uses cors
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) === -1) {
+        //if specific origin isn't fount on the list of allowed origins
+        let message =
+          "The CORS policy for this application doesn't allow access from origin " +
+          origin;
+
+        return callback(new Error(message), false);
+      }
+      return callback(null, true);
+    },
+  })
+);
+
+// after middleware, for route middle
 let auth = require("./auth")(app); // importing local auth file, app argument to ensure express is available in auth.js
 const passport = require("passport"); // importing passport library
 require("./passport"); // importing passport.js file
@@ -215,32 +239,53 @@ app.get(
 // -- POST REQUESTS --
 
 // Post allows users to register if not already existed
-app.post("/users", (req, res) => {
-  Users.findOne({ Username: req.body.Username }) // checks to see if user already exists
-    .then((user) => {
-      if (user) {
-        return res.status(400).send(req.body.Username + "already exists");
-      } else {
-        Users.create({
-          Username: req.body.Username,
-          Password: req.body.Password,
-          Email: req.body.Email,
-          Birthday: req.body.Birthday,
-        })
-          .then((user) => {
-            res.status(201).json(user); // responds with requested new user
+app.post(
+  "/users",
+  [
+    check("Username", "Username is required").isLength({ min: 5 }),
+    check(
+      "Username",
+      "Non alphanumeric characters are not allowed."
+    ).isAlphanumeric(),
+    check("Password", "Password is required").not().isEmpty(),
+    check("Email", "Enter in a valid email").isEmail(),
+  ],
+  async (req, res) => {
+    // checks validation object for errors
+    let errors = validationResult(req);
+
+    // returns error in a JSON object as an HTTP response
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
+
+    let hashedPassword = Users.hashPassword(req.body.Password); // hashes password before storing in db
+    Users.findOne({ Username: req.body.Username }) // checks to see if user already exists
+      .then((user) => {
+        if (user) {
+          return res.status(400).send(req.body.Username + "already exists");
+        } else {
+          Users.create({
+            Username: req.body.Username,
+            Password: hashedPassword,
+            Email: req.body.Email,
+            Birthday: req.body.Birthday,
           })
-          .catch((error) => {
-            console.log(error);
-            res.status(500).send("Error: " + error); // responds with error
-          });
-      }
-    })
-    .catch((error) => {
-      console.log(error);
-      res.status(500).send("Error: " + error); // responds with error
-    });
-});
+            .then((user) => {
+              res.status(201).json(user); // responds with requested new user
+            })
+            .catch((error) => {
+              console.log(error);
+              res.status(500).send("Error: " + error); // responds with error
+            });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        res.status(500).send("Error: " + error); // responds with error
+      });
+  }
+);
 
 // Puts updated information to users account: username, password, email, birthday
 app.put(
