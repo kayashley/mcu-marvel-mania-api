@@ -1,7 +1,7 @@
-const passport = require("passport"); // importing passport library
-const LocalStrategy = require("passport-local").Strategy; // importing passport strategy auth
-const Models = require("./models.js"); // importing local models js
-const passportJWT = require("passport-jwt"); // importing passport strategy for jwt auth
+const passport = require("passport"), // importing passport library
+  LocalStrategy = require("passport-local").Strategy, // importing passport strategy auth
+  Models = require("./models.js"), // importing local models js
+  passportJWT = require("passport-jwt"); // importing passport strategy for jwt auth
 
 let Users = Models.User, // model user from db
   JWTStrategy = passportJWT.Strategy,
@@ -53,7 +53,7 @@ passport.use(
   new JWTStrategy(
     {
       jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(), // jwt is extracted from header of http req, called the bearer token
-      secretOrKey: "jwt-key", // to verify signature of jwt
+      secretOrKey: "your_jwt_secret", // to verify signature of jwt
     },
     async (jwtPayload, callback) => {
       return await Users.findById(jwtPayload._id) // searches db to find user by id
@@ -61,7 +61,7 @@ passport.use(
           return callback(null, user);
         })
         .catch((error) => {
-          return callback, error;
+          return callback(error);
         });
     }
   )

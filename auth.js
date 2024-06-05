@@ -4,26 +4,23 @@
 - also generates a jwt for the user 
 */
 
-const jwtSecret = "jwt-key"; // same key used in passport.js for jwtStrategy
+const jwtSecret = "your_jwt_secret"; // same key used in passport.js for jwtStrategy
 const jwt = require("jsonwebtoken"); // importing jwt library
 passport = require("passport"); // importing passport library
 
-require("./passport.js"); // local passport file
+require("./passport"); // local passport file
 
 let generateJWTToken = (user) => {
-  return (
-    jwt.sign(user, jwtSecret),
-    {
-      subject: user.Username, // username encoded in jwt
-      expiresIn: "7d", // specifies expiration - 7 days
-      algorithm: "HS256", // algorithm to "sign" or encode the values of jwt
-    }
-  );
+  return jwt.sign(user, jwtSecret, {
+    subject: user.Username, // username encoded in jwt
+    expiresIn: "7d", // specifies expiration - 7 days
+    algorithm: "HS256", // algorithm to "sign" or encode the values of jwt
+  });
 };
 
 // POST Login
 module.exports = (router) => {
-  router.post("./login", (req, res) => {
+  router.post("/login", (req, res) => {
     passport.authenticate("local", { session: false }, (error, user, info) => {
       // if error OR user is incorrect
       if (error || !user) {
@@ -34,6 +31,7 @@ module.exports = (router) => {
       }
       req.login(user, { session: false }, (error) => {
         if (error) {
+          console.log(error);
           res.send(error);
         }
         // user is authenticated with jwt
