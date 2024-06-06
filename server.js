@@ -4,6 +4,7 @@ const fs = require("fs"); // importing fs module
 const path = require("path"); // importing path module
 const bodyParser = require("body-parser"); // importing body-parser module
 const uuid = require("uuid"); // importing uuid module, unique id
+const favicon = require("favicon"); // importing favicon package
 
 // integrating mongoose with REST API
 const mongoose = require("mongoose"); // importing mongoose module
@@ -18,19 +19,19 @@ const Genres = Models.Genre; // Genre model
 // server-side validation
 const { check, validationResult } = require("express-validator"); // importing express-validator package
 
-mongoose.connect(
-  "mongodb+srv://kayashchan:qxJarHH5h0KcGazJ@mcu-marvel-movie-db.k06zdqt.mongodb.net/?retryWrites=true&w=majority",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
+// mongoose.connect(
+//   "mongodb+srv://kayashchan:qxJarHH5h0KcGazJ@mcu-marvel-movie-db.k06zdqt.mongodb.net/?retryWrites=true&w=majority",
+//   {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//   }
+// );
 
 // Mongoose connects to db, "MCUmarvel-movie-api-db"
-// mongoose.connect("mongodb://127.0.0.1:27017/MCUmarvel-movie-api-db", {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
+mongoose.connect("mongodb://127.0.0.1:27017/MCUmarvel-movie-api-db", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 // app = express functionality
 const app = express(); // to config to web server
@@ -50,6 +51,7 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), {
 app.use(morgan("combined", { stream: accessLogStream }));
 app.use(express.static("public")); // send many static files
 app.use(bodyParser.json()); // middleware that allows you to access the body of a req through 'req.body'
+app.use(favicon(path.join(dirname, "build", "favicon.ico")));
 
 // before auth router middleware
 const cors = require("cors"); // importing cors module
@@ -418,15 +420,15 @@ app.use((err, req, res, next) => {
 });
 
 // listen for requests
-// const port = process.env.PORT || 8080;
-// app.listen(port, "0.0.0.0", () => {
-//   console.log("Listening to port " + port);
-// });
-
-app.listen(process.env.PORT || 8080, function () {
-  console.log(
-    "Express server listening on port %d in %s mode",
-    this.address().port,
-    app.settings.env
-  );
+const port = process.env.PORT || 8080;
+app.listen(port, () => {
+  console.log("Listening to port " + port);
 });
+
+// app.listen(process.env.PORT || 8080, function () {
+//   console.log(
+//     "Express server listening on port %d in %s mode",
+//     this.address().port,
+//     app.settings.env
+//   );
+// });
