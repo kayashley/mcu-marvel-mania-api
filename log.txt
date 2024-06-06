@@ -338,3 +338,7 @@ Timestamp: Fri May 17 2024 15:53:21 GMT-0400 (Eastern Daylight Time)
 ::1 - - [05/Jun/2024:20:49:08 +0000] "DELETE /users/email HTTP/1.1" 200 18 "-" "PostmanRuntime/7.37.3"
 ::1 - - [05/Jun/2024:20:49:11 +0000] "GET /users HTTP/1.1" 201 1146 "-" "PostmanRuntime/7.37.3"
 127.0.0.1 - - [06/Jun/2024:18:24:26 +0000] "GET /users HTTP/1.1" 201 1146 "-" "PostmanRuntime/7.37.3"
+127.0.0.1 - - [06/Jun/2024:19:36:28 +0000] "GET /users HTTP/1.1" 201 1146 "-" "PostmanRuntime/7.37.3"
+::1 - - [06/Jun/2024:19:36:47 +0000] "GET /users HTTP/1.1" 201 1146 "-" "PostmanRuntime/7.37.3"
+::1 - - [06/Jun/2024:19:36:48 +0000] "GET /users HTTP/1.1" 201 1146 "-" "PostmanRuntime/7.37.3"
+::1 - - [06/Jun/2024:19:42:07 +0000] "GET /users HTTP/1.1" 201 1146 "-" "PostmanRuntime/7.37.3"

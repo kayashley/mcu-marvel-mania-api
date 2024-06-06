@@ -18,10 +18,13 @@ const Genres = Models.Genre; // Genre model
 // server-side validation
 const { check, validationResult } = require("express-validator"); // importing express-validator package
 
-mongoose.connect("https://mcu-movie-app-api.onrender.com", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  "mongodb+srv://kayashchan:qxJarHH5h0KcGazJ@mcu-marvel-movie-db.k06zdqt.mongodb.net/?retryWrites=true&w=majority",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
 
 // Mongoose connects to db, "MCUmarvel-movie-api-db"
 // mongoose.connect("mongodb://127.0.0.1:27017/MCUmarvel-movie-api-db", {
@@ -415,7 +418,15 @@ app.use((err, req, res, next) => {
 });
 
 // listen for requests
-const port = process.env.PORT || 8080;
-app.listen(port, "0.0.0.0", () => {
-  console.log("Listening to port " + port);
+// const port = process.env.PORT || 8080;
+// app.listen(port, "0.0.0.0", () => {
+//   console.log("Listening to port " + port);
+// });
+
+app.listen(process.env.PORT || 8080, function () {
+  console.log(
+    "Express server listening on port %d in %s mode",
+    this.address().port,
+    app.settings.env
+  );
 });
