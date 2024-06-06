@@ -19,19 +19,19 @@ const Genres = Models.Genre; // Genre model
 const { check, validationResult } = require("express-validator"); // importing express-validator package
 
 // connecting to mongodb
-mongoose.connect(
-  "mongodb+srv://kayashchan:qxJarHH5h0KcGazJ@mcu-marvel-movie-db.k06zdqt.mongodb.net/?retryWrites=true&w=majority",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
+// mongoose.connect(
+//   "mongodb+srv://kayashchan:qxJarHH5h0KcGazJ@mcu-marvel-movie-db.k06zdqt.mongodb.net/?retryWrites=true&w=majority",
+//   {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//   }
+// );
 
 // Mongoose connects to db, "MCUmarvel-movie-api-db"
-// mongoose.connect("mongodb://127.0.0.1:27017/MCUmarvel-movie-api-db", {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
+mongoose.connect("mongodb://127.0.0.1:27017/MCUmarvel-movie-api-db", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 // app = express functionality
 const app = express(); // to config to web server
