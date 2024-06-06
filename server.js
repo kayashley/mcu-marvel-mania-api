@@ -51,7 +51,7 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), {
 app.use(morgan("combined", { stream: accessLogStream }));
 app.use(express.static("public")); // send many static files
 app.use(bodyParser.json()); // middleware that allows you to access the body of a req through 'req.body'
-app.use(favicon(path.join(dirname, "build", "favicon.ico")));
+// app.use(favicon(path.join(__dirname, "build", "favicon.ico")));
 
 // before auth router middleware
 const cors = require("cors"); // importing cors module
