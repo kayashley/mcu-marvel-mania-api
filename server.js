@@ -4,7 +4,6 @@ const fs = require("fs"); // importing fs module
 const path = require("path"); // importing path module
 const bodyParser = require("body-parser"); // importing body-parser module
 const uuid = require("uuid"); // importing uuid module, unique id
-const favicon = require("favicon"); // importing favicon package
 
 // integrating mongoose with REST API
 const mongoose = require("mongoose"); // importing mongoose module
@@ -19,6 +18,7 @@ const Genres = Models.Genre; // Genre model
 // server-side validation
 const { check, validationResult } = require("express-validator"); // importing express-validator package
 
+// connecting to mongodb
 mongoose.connect(
   "mongodb+srv://kayashchan:qxJarHH5h0KcGazJ@mcu-marvel-movie-db.k06zdqt.mongodb.net/?retryWrites=true&w=majority",
   {
@@ -51,7 +51,6 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), {
 app.use(morgan("combined", { stream: accessLogStream }));
 app.use(express.static("public")); // send many static files
 app.use(bodyParser.json()); // middleware that allows you to access the body of a req through 'req.body'
-// app.use(favicon(path.join(__dirname, "build", "favicon.ico")));
 
 // before auth router middleware
 const cors = require("cors"); // importing cors module
