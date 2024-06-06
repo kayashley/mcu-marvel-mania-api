@@ -18,8 +18,7 @@ const Genres = Models.Genre; // Genre model
 // server-side validation
 const { check, validationResult } = require("express-validator"); // importing express-validator package
 
-// connecting to mongodb
-mongoose.connect("process.env.CONNECTION_URI", {
+mongoose.connect("https://mcu-movie-app-api.onrender.com", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
