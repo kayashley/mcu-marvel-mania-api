@@ -112,7 +112,11 @@ let MCUmovies = [
 
 // Gets route for the root URL (default - home)
 app.get("/", (req, res) => {
-  res.send("Welcome to MCU marvel movie api!");
+  res.json([
+    { id: 1, title: "Movie 1" },
+    { id: 2, title: "Movie 2" },
+  ]);
+  // res.send("Welcome to MCU marvel movie api!");
 });
 
 // Gets all users
