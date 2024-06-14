@@ -111,12 +111,20 @@ let MCUmovies = [
 // -- GET REQUESTS --
 
 // Gets route for the root URL (default - home)
-app.get("/", (req, res) => {
-  res.json([
-    { id: 1, title: "Movie 1" },
-    { id: 2, title: "Movie 2" },
-  ]);
-  // res.send("Welcome to MCU marvel movie api!");
+// app.get("/", (req, res) => {
+//   res.send("Welcome to MCU marvel movie api!");
+// });
+
+app.get("/", async (req, res) => {
+  try {
+    const response = await fetch(
+      "https://mcumarvel-c028170c1f00.herokuapp.com/"
+    );
+    const data = await response.json();
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch data" });
+  }
 });
 
 // Gets all users
