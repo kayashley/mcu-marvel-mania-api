@@ -147,17 +147,21 @@ app.get(
 );
 
 // Gets list of marvel movies
-// passport.authenticate("jwt", { session: false })
-app.get("/movies", async (req, res) => {
-  Movies.find() // Movies model
-    .then((movies) => {
-      res.status(201).json(movies); // responds with list of all movies using the movies model
-    })
-    .catch((error) => {
-      console.log(error);
-      res.status(500).send("Error: " + error); // responds with error
-    });
-});
+//
+app.get(
+  "/movies",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    Movies.find() // Movies model
+      .then((movies) => {
+        res.status(201).json(movies); // responds with list of all movies using the movies model
+      })
+      .catch((error) => {
+        console.log(error);
+        res.status(500).send("Error: " + error); // responds with error
+      });
+  }
+);
 
 // Gets movie by title
 app.get(
