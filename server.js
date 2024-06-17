@@ -176,37 +176,31 @@ app.get(
 );
 
 // Gets movies by genre
-app.get(
-  "/movies/genres/:genreId",
-  passport.authenticate("jwt", { session: false }),
-  async (req, res) => {
-    Movies.find({ Genres: req.params.genreId })
-      .then((movies) => {
-        console.log("Movies:", movies);
-        res.json(movies);
-      })
-      .catch((err) => {
-        console.error(err);
-        res.status(500).send("Error: " + err);
-      });
-  }
-);
+// passport.authenticate("jwt", { session: false }),
+app.get("/movies/genres/:genreId", async (req, res) => {
+  Movies.find({ Genres: req.params.genreId })
+    .then((movies) => {
+      console.log("Movies:", movies);
+      res.json(movies);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error: " + err);
+    });
+});
 
 // Gets movies by director name
-app.get(
-  "/movies/directors/:directorID",
-  passport.authenticate("jwt", { session: false }),
-  async (req, res) => {
-    Movies.find({ Directors: req.params.directorID })
-      .then((movies) => {
-        res.json(movies);
-      })
-      .catch((err) => {
-        console.error(err);
-        res.status(500).send("Error: " + err);
-      });
-  }
-);
+// passport.authenticate("jwt", { session: false }),
+app.get("/movies/directors/:directorID", async (req, res) => {
+  Movies.find({ Directors: req.params.directorID })
+    .then((movies) => {
+      res.json(movies);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error: " + err);
+    });
+});
 
 // Gets data of director(s)
 app.get(
