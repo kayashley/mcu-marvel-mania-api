@@ -18,6 +18,23 @@ let movieSchema = mongoose.Schema({
   Image: { type: String, required: true },
 });
 
+// sortedMovieSchema dictates format for collection
+let sortedMovieSchema = mongoose.Schema({
+  Name: { type: String, required: true },
+  Rating: { type: String, required: true },
+  ReleaseDate: Date,
+  Runtime: { type: String, required: true },
+  Synopsis: { type: String, required: true },
+  Directors: {
+    Name: String,
+    Birthyear: Date,
+    Bio: String,
+  },
+  Directors: [{ type: mongoose.Schema.Types.ObjectId, ref: "Director" }],
+  Genres: [{ type: mongoose.Schema.Types.ObjectId, ref: "Genre" }],
+  Image: { type: String, required: true },
+});
+
 // directorSchema dictates format for collection
 let directorSchema = mongoose.Schema({
   Name: { type: String, required: true },
@@ -51,11 +68,13 @@ userSchema.methods.validatePassword = function (password) {
 };
 
 let Movie = mongoose.model("Movie", movieSchema); // creates db.movies within MongoDB
+let SortedMovie = mongoose.model("SortedMovie", sortedMovieSchema); // creates db.sortedMovies within MongoDB
 let User = mongoose.model("User", userSchema); // creates db.users within MongoDB
 let Director = mongoose.model("Director", directorSchema); // creates db.directors within MongoDB
 let Genre = mongoose.model("Genre", genreSchema); // creates db.genres within MongoDB
 
 module.exports.Movie = Movie; // exports model, Movie
+module.exports.SortedMovie = SortedMovie; // exports model, SortedMovie
 module.exports.User = User; // exports model, User
 module.exports.Director = Director; // exports model, Director
 module.exports.Genre = Genre; // exports model, Genre

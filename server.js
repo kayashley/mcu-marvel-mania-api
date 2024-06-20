@@ -11,6 +11,7 @@ const Models = require("./models.js"); // importing models.js file
 const { error } = require("console");
 // importing mongoose models
 const Movies = Models.Movie; // Movie model
+const SortedMovies = Models.SortedMovie; // SortedMovie model
 const Users = Models.User; // User model
 const Directors = Models.Director; // Director model
 const Genres = Models.Genre; // Genre model
@@ -149,7 +150,7 @@ app.get(
 // Gets list of marvel movies
 //passport.authenticate("jwt", { session: false })
 app.get("/movies", async (req, res) => {
-  Movies.find() // Movies model
+  SortedMovies.find() // SortedMovies model
     .then((movies) => {
       res.status(201).json(movies); // responds with list of all movies using the movies model
     })
@@ -164,7 +165,7 @@ app.get(
   "/movies/:Name",
   passport.authenticate("jwt", { session: false }),
   async (req, res) => {
-    Movies.findOne({ Name: req.params.Name }) // finds name of movie
+    SortedMovies.findOne({ Name: req.params.Name }) // finds name of movie
       .then((movie) => {
         res.json(movie); // responds with info of requested movie
       })
@@ -178,7 +179,7 @@ app.get(
 // Gets movies by genre
 // passport.authenticate("jwt", { session: false }),
 app.get("/movies/genres/:genreId", async (req, res) => {
-  Movies.find({ Genres: req.params.genreId })
+  SortedMovies.find({ Genres: req.params.genreId })
     .then((movies) => {
       console.log("Movies:", movies);
       res.json(movies);
@@ -192,7 +193,7 @@ app.get("/movies/genres/:genreId", async (req, res) => {
 // Gets movies by director name
 // passport.authenticate("jwt", { session: false }),
 app.get("/movies/directors/:directorID", async (req, res) => {
-  Movies.find({ Directors: req.params.directorID })
+  SortedMovies.find({ Directors: req.params.directorID })
     .then((movies) => {
       res.json(movies);
     })
