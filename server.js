@@ -149,7 +149,7 @@ app.get(
 
 // Gets list of marvel movies
 //passport.authenticate("jwt", { session: false })
-app.get("/movies", async (req, res) => {
+app.get("/sortedMovies", async (req, res) => {
   SortedMovies.find() // SortedMovies model
     .then((movies) => {
       res.status(201).json(movies); // responds with list of all movies using the movies model
