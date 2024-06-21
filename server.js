@@ -152,6 +152,7 @@ app.get(
 app.get("/movies", async (req, res) => {
   SortedMovies.find() // SortedMovies model
     .then((movies) => {
+      console.log("Fetched movies: ", movies);
       res.status(201).json(movies); // responds with list of all movies using the movies model
     })
     .catch((error) => {
