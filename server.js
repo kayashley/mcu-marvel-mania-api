@@ -148,18 +148,21 @@ app.get(
 );
 
 // Gets list of marvel movies
-//passport.authenticate("jwt", { session: false })
-app.get("/movies", async (req, res) => {
-  SortedMovies.find() // SortedMovies model
-    .then((movies) => {
-      console.log("Fetched movies: ", movies);
-      res.status(201).json(movies); // responds with list of all movies using the movies model
-    })
-    .catch((error) => {
-      console.log(error);
-      res.status(500).send("Error: " + error); // responds with error
-    });
-});
+app.get(
+  "/movies",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    SortedMovies.find() // SortedMovies model
+      .then((movies) => {
+        console.log("Fetched movies: ", movies);
+        res.status(201).json(movies); // responds with list of all movies using the movies model
+      })
+      .catch((error) => {
+        console.log(error);
+        res.status(500).send("Error: " + error); // responds with error
+      });
+  }
+);
 
 // Gets movie by title
 app.get(
@@ -178,31 +181,37 @@ app.get(
 );
 
 // Gets movies by genre
-// passport.authenticate("jwt", { session: false }),
-app.get("/movies/genres/:genreId", async (req, res) => {
-  SortedMovies.find({ Genres: req.params.genreId })
-    .then((movies) => {
-      console.log("Movies:", movies);
-      res.json(movies);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send("Error: " + err);
-    });
-});
+app.get(
+  "/movies/genres/:genreId",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    SortedMovies.find({ Genres: req.params.genreId })
+      .then((movies) => {
+        console.log("Movies:", movies);
+        res.json(movies);
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(500).send("Error: " + err);
+      });
+  }
+);
 
 // Gets movies by director name
-// passport.authenticate("jwt", { session: false }),
-app.get("/movies/directors/:directorID", async (req, res) => {
-  SortedMovies.find({ Directors: req.params.directorID })
-    .then((movies) => {
-      res.json(movies);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send("Error: " + err);
-    });
-});
+app.get(
+  "/movies/directors/:directorID",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    SortedMovies.find({ Directors: req.params.directorID })
+      .then((movies) => {
+        res.json(movies);
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(500).send("Error: " + err);
+      });
+  }
+);
 
 // Gets data of director(s)
 app.get(
