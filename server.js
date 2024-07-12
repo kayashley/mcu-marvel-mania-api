@@ -52,7 +52,10 @@ app.use(bodyParser.json()); // middleware that allows you to access the body of 
 
 // before auth router middleware
 const cors = require("cors"); // importing cors module
-const allowedOrigins = ["http://localhost:1234"]; // allowing origins
+const allowedOrigins = [
+  "http://localhost:1234",
+  "https://mcu-marvel-mania.netlify.app",
+]; // allowing origins
 // configuring to handle CORS
 app.use(
   cors({
