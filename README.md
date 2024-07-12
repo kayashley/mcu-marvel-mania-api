@@ -176,8 +176,8 @@ The backend API connects to MongoDB Atlas for data storage and uses a connection
 
 For any questions or suggestions, please contact me:
 
-Name: Kayla Chan
-Email: kayashchan@gmail.com
-GitHub: kayashley
+- Name: Kayla Chan
+- Email: kayashchan@gmail.com
+- GitHub: kayashley
 
 Feel free to open an issue or send a pull request!
