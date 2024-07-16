@@ -167,6 +167,27 @@ app.get(
   }
 );
 
+// Get movie by ID with populated directors and genres
+app.get("/movies/:id", async (req, res) => {
+  try {
+    console.log(`Received request for movie ID: ${req.params.id}`);
+    const movie = await Movies.findById(req.params.id)
+      .populate("Directors")
+      .populate("Genres")
+      .exec();
+    console.log("Movie with populate:", movie);
+
+    if (!movie) {
+      return res.status(404).send("Movie not found");
+    }
+
+    res.json(movie);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error retrieving movie");
+  }
+});
+
 // Gets movie by title
 app.get(
   "/movies/:Name",
