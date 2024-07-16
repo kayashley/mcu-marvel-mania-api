@@ -415,3 +415,5 @@ Timestamp: Fri May 17 2024 15:53:21 GMT-0400 (Eastern Daylight Time)
 ::1 - - [13/Jul/2024:19:02:07 +0000] "GET /movies/6675d40243e8fef49ac7e530 HTTP/1.1" 200 4 "-" "PostmanRuntime/7.37.3"
 ::1 - - [13/Jul/2024:19:03:24 +0000] "GET /movies/6675d40243e8fef49ac7e530 HTTP/1.1" 200 4 "-" "PostmanRuntime/7.37.3"
 ::1 - - [13/Jul/2024:19:06:53 +0000] "GET /movies/6675d40243e8fef49ac7e530 HTTP/1.1" 404 29 "-" "PostmanRuntime/7.37.3"
+::1 - - [16/Jul/2024:21:52:26 +0000] "GET /movies/6675d40243e8fef49ac7e530 HTTP/1.1" 404 15 "-" "PostmanRuntime/7.40.0"
+::1 - - [16/Jul/2024:21:52:42 +0000] "GET /movies/66566168f065c4f12c325430 HTTP/1.1" 200 2404 "-" "PostmanRuntime/7.40.0"
